@@ -51,7 +51,8 @@ class ObatController extends Controller
      */
     public function show($id)
     {
-        //
+        $item = Katalog_Obat::findOrFail($id);
+        return view('productDetail', compact('item'));
     }
 
     /**
@@ -62,7 +63,8 @@ class ObatController extends Controller
      */
     public function edit($id)
     {
-        //
+        
+
     }
 
     /**

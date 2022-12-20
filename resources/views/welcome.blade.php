@@ -17,7 +17,7 @@
           <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
               <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="#">Home</a>
+                <a class="nav-link active" aria-current="page" href="{{route('welcome')}}">Home</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="#">Features</a>
@@ -48,7 +48,7 @@
                     <h5 class="card-title">{{$item->nama}}</h5>
                     <p class="card-text">Harga : Rp.{{$item->harga}}</p>
                     <p class="card-text">Stok  : {{$item->stok}}</p>
-                    <a href="#" class="btn btn-primary btn-sm">Product Detail</a>
+                    <a href="/obat/{{$item->id}}" class="btn btn-primary btn-sm">Product Detail</a>
                   </div>
                 </div>
               </div>

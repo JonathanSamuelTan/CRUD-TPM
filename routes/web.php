@@ -13,8 +13,9 @@ use App\Http\Controllers\ObatController;
 |
 */
 
-Route::get('/welcome', [ObatController::class, 'index'])->name('welcome'); 
+Route::get('/', [ObatController::class, 'index'])->name('welcome'); 
 Route::get('/add-obat',[ObatController::class, 'create'])->name('add');
 Route::post('/store-obat',[ObatController::class, 'store'])->name('store');
+Route::get('/obat/{id}',[ObatController::class, 'show'])->name('detail');
 
 
