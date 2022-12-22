@@ -36,24 +36,42 @@
             @method('PATCH')
             <div class="mb-3">
               <label for="nama" class="form-label">Nama Obat</label>
-              <input type="text" class="form-control" id="nama" aria-describedby="emailHelp" name="nama" value="{{$item->nama}}">
+              <input type="text" class="form-control @error('nama') is-invalid @enderror" id="nama" aria-describedby="emailHelp" name="nama" value = {{$item->nama}}>
+              @error('nama')
+                <div class="alert alert-danger">{{ $message }}</div>
+              @enderror
             </div>
             <div class="mb-3">
               <label for="pabrik" class="form-label">PBF</label>
-              <input type="text" class="form-control" id="pabrik" name="pbf" value="{{$item->pbf}}">
+              <input type="text" class="form-control @error('pbf') is-invalid @enderror" id="pabrik" name="pbf"
+              value = {{$item->pbf}}>
+              @error('pbf')
+                <div class="alert alert-danger">{{ $message }}</div>
+              @enderror
             </div>
             <div class="mb-3">
                 <label for="stok" class="form-label">Stok</label>
-                <input type="number" class="form-control" id="stok" name="stok" value="{{$item->stok}}">
+                <input type="number" class="form-control @error('stok') is-invalid @enderror" id="stok" name="stok"
+                value = {{$item->stok}}>
+                @error('stok')
+                <div class="alert alert-danger">{{ $message }}</div>
+                @enderror
             </div>
             <div class="mb-3">
                 <label for="harga" class="form-label">Harga</label>
-                <input type="number" class="form-control" id="harga" name="harga" value="{{$item->harga}}">
+                <input type="number" class="form-control @error('harga') is-invalid @enderror" id="harga" name="harga"
+                value = {{$item->harga}}>
+                @error('harga')
+                <div class="alert alert-danger">{{ $message }}</div>
+                @enderror
             </div>
             <div class="mb-3">
-              <label for="image" class="form-label">Image</label>
-              <input type="file" class="form-control" id="image" name="image" value="{{$item->image}}">
-            </div>
+              <label for="image" class="form-label">Gambar</label>
+              <input type="file" class="form-control @error('image') is-invalid @enderror" id="image" name="image">
+              @error('image')
+                <div class="alert alert-danger">{{ $message }}</div>
+              @enderror
+          </div>
             <button type="submit" class="btn btn-primary">Submit</button>
           </form>
       </div>

@@ -34,8 +34,13 @@ class ObatController extends Controller
      */
     public function store(Request $request)
     {
-        // $filename = $request->file('image')->getClientOriginalName();
-        // $request->file('image')->move('gambar', $filename);
+        $validated = $request->validate([
+            'nama' => 'required | min:3',
+            'pbf' => 'required',
+            'stok' => 'required | numeric | min:1',
+            'harga' => 'required | numeric | min:1',
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048'
+        ]);
         $extension = $request->file('image')->getClientOriginalExtension();
         $filename = $request->nama . '.' . $extension;
         $request->file('image')->storeAs('/public/Obat', $filename);
@@ -83,14 +88,22 @@ class ObatController extends Controller
      */
     public function update(Request $request, $id)
     {
-        // $filename = $request->file('image')->getClientOriginalName();
-        // $request->file('image')->move('gambar', $filename);
+        $validated = $request->validate([
+            'nama' => 'required | min:3',
+            'pbf' => 'required',
+            'stok' => 'required | numeric | min:1',
+            'harga' => 'required | numeric | min:1',
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048'
+        ]);
+        $extension = $request->file('image')->getClientOriginalExtension();
+        $filename = $request->nama . '.' . $extension;
+        $request->file('image')->storeAs('/public/Obat', $filename);
         $item = Katalog_Obat::findOrFail($id)->update([
             'nama' => $request->nama,
             'pbf' => $request->pbf,
             'stok' => $request->stok,
-            'harga' => $request->harga
-            // 'image' => $filename
+            'harga' => $request->harga,
+            'image' => $filename
         ]);
         return redirect()->route('welcome');
     }
