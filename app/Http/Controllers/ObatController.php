@@ -34,11 +34,17 @@ class ObatController extends Controller
      */
     public function store(Request $request)
     {
+        // $filename = $request->file('image')->getClientOriginalName();
+        // $request->file('image')->move('gambar', $filename);
+        $extension = $request->file('image')->getClientOriginalExtension();
+        $filename = $request->nama . '.' . $extension;
+        $request->file('image')->storeAs('/public/Obat', $filename);
         Katalog_Obat::create([
             'nama' => $request->nama,
             'pbf' => $request->pbf,
             'stok' => $request->stok,
-            'harga' => $request->harga
+            'harga' => $request->harga,
+            'image' => $filename
         ]);
         return redirect()->route('welcome');
     }
@@ -63,7 +69,8 @@ class ObatController extends Controller
      */
     public function edit($id)
     {
-        
+        $item = Katalog_Obat::findOrFail($id);
+        return view("UpdateObat", compact('item'));
 
     }
 
@@ -76,7 +83,16 @@ class ObatController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        // $filename = $request->file('image')->getClientOriginalName();
+        // $request->file('image')->move('gambar', $filename);
+        $item = Katalog_Obat::findOrFail($id)->update([
+            'nama' => $request->nama,
+            'pbf' => $request->pbf,
+            'stok' => $request->stok,
+            'harga' => $request->harga
+            // 'image' => $filename
+        ]);
+        return redirect()->route('welcome');
     }
 
     /**
@@ -87,6 +103,10 @@ class ObatController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Katalog_Obat::destroy($id);
+        return redirect()->route('welcome');
     }
+
+
+    
 }

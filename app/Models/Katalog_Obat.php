@@ -13,5 +13,6 @@ class Katalog_Obat extends Model
         'pbf',
         'stok',
         'harga',
+        'image'
     ];
 }

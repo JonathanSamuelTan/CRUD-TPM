@@ -32,6 +32,7 @@
     <div>
         <div class="card" style="width: 18rem;">
             <div class="card-body">
+              <img src="{{asset('/storage/Obat/'.$item->image)}}" class="card-img-top" alt="{{$item->nama}}"> 
               <h5 class="card-title">{{$item->nama}}</h5>
               <p class="card-text">Rp.{{$item->harga}}</p>
             </div>

@@ -31,23 +31,28 @@
 
       <div class="m-5">
         <h1>Update Data Obat</h1>
-        <form action="/store-obat" method="POST">
+        <form action="{{route('update', $item->id)}}" method="POST" enctype="multipart/form-data">
             @csrf
+            @method('PATCH')
             <div class="mb-3">
               <label for="nama" class="form-label">Nama Obat</label>
-              <input type="text" class="form-control" id="nama" aria-describedby="emailHelp" name="nama">
+              <input type="text" class="form-control" id="nama" aria-describedby="emailHelp" name="nama" value="{{$item->nama}}">
             </div>
             <div class="mb-3">
               <label for="pabrik" class="form-label">PBF</label>
-              <input type="text" class="form-control" id="pabrik" name="pbf">
+              <input type="text" class="form-control" id="pabrik" name="pbf" value="{{$item->pbf}}">
             </div>
             <div class="mb-3">
                 <label for="stok" class="form-label">Stok</label>
-                <input type="number" class="form-control" id="stok" name="stok">
+                <input type="number" class="form-control" id="stok" name="stok" value="{{$item->stok}}">
             </div>
             <div class="mb-3">
                 <label for="harga" class="form-label">Harga</label>
-                <input type="number" class="form-control" id="harga" name="harga">
+                <input type="number" class="form-control" id="harga" name="harga" value="{{$item->harga}}">
+            </div>
+            <div class="mb-3">
+              <label for="image" class="form-label">Image</label>
+              <input type="file" class="form-control" id="image" name="image" value="{{$item->image}}">
             </div>
             <button type="submit" class="btn btn-primary">Submit</button>
           </form>

@@ -45,10 +45,17 @@
               <div class="col-sm-3 my-3">
                 <div class="card">
                   <div class="card-body">
+                    <img src="{{asset('/storage/Obat/'.$item->image)}}" class="card-img-top" alt="{{$item->nama}}"> 
                     <h5 class="card-title">{{$item->nama}}</h5>
                     <p class="card-text">Harga : Rp.{{$item->harga}}</p>
                     <p class="card-text">Stok  : {{$item->stok}}</p>
-                    <a href="/obat/{{$item->id}}" class="btn btn-primary btn-sm">Product Detail</a>
+                    <a href="/obat/{{$item->id}}" class="btn btn-primary btn-sm my-2">Product Detail</a>
+                    <a href="/edit/{{$item->id}}" class="btn btn-success btn-sm my-2">Update</a>
+                    <form action="/delete/{{$item->id}}" method="POST">
+                      @csrf
+                      @method('DELETE')
+                      <button class="btn btn-danger btn-sm my-2">Delete</button>
+                    </form>
                   </div>
                 </div>
               </div>

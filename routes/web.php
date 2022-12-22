@@ -17,5 +17,6 @@ Route::get('/', [ObatController::class, 'index'])->name('welcome');
 Route::get('/add-obat',[ObatController::class, 'create'])->name('add');
 Route::post('/store-obat',[ObatController::class, 'store'])->name('store');
 Route::get('/obat/{id}',[ObatController::class, 'show'])->name('detail');
-
-
+Route::get('/edit/{id}', [ObatController::class, 'edit'])->name('edit'); 
+Route::patch('/update/{id}', [ObatController::class, 'update'])->name('update');
+Route::delete('/delete/{id}', [ObatController::class, 'destroy'])->name('delete');
