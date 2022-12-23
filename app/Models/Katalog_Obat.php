@@ -10,9 +10,15 @@ class Katalog_Obat extends Model
     use HasFactory;
     protected $fillable = [
         'nama',
+        'kegunaan_id',
         'pbf',
         'stok',
         'harga',
         'image'
     ];
+
+    public function kegunaan()
+    {
+        return $this->belongsTo(kegunaan::class);
+    }
 }

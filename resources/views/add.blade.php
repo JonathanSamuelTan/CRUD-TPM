@@ -40,6 +40,14 @@
                 <div class="alert alert-danger">{{ $message }}</div>
               @enderror
             </div>
+            
+            <select class="form-select" aria-label="Default select example" name="kegunaan_id">
+              <option selected>Kegunaan Obat</option>
+              @foreach ($kegunaan as $item)
+                <option value="{{$item->id}}">{{$item->kegunaan}}</option>
+              @endforeach
+            </select>
+
             <div class="mb-3">
               <label for="pabrik" class="form-label">PBF</label>
               <input type="text" class="form-control @error('pbf') is-invalid @enderror" id="pabrik" name="pbf"

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Katalog_Obat;
+use App\Models\kegunaan;
 
 class ObatController extends Controller
 {
@@ -23,7 +24,8 @@ class ObatController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create(){
-        return view('add');
+        $kegunaan = kegunaan::all();
+        return view('add', compact('kegunaan'));
     }
 
     /**
@@ -35,10 +37,11 @@ class ObatController extends Controller
     public function store(Request $request)
     {
         $validated = $request->validate([
-            'nama' => 'required | min:3',
+            'nama' => 'required | min:3 | max:255 ',
             'pbf' => 'required',
             'stok' => 'required | numeric | min:1',
             'harga' => 'required | numeric | min:1',
+            'kegunaan_id' => 'required',
             'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048'
         ]);
         $extension = $request->file('image')->getClientOriginalExtension();
@@ -47,6 +50,7 @@ class ObatController extends Controller
         Katalog_Obat::create([
             'nama' => $request->nama,
             'pbf' => $request->pbf,
+            'kegunaan_id' => $request->kegunaan_id,
             'stok' => $request->stok,
             'harga' => $request->harga,
             'image' => $filename

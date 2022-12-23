@@ -13,15 +13,9 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('katalog__obats', function (Blueprint $table) {
+        Schema::create('kegunaans', function (Blueprint $table) {
             $table->id();
-            $table->string('nama');
-            $table->string('pbf');
-            $table->integer('stok');
-            $table->integer('harga');
-            $table->string('image');
-            $table->integer('kegunaan_id');
-            $table->foreign('kegunaan_id')->references('id')->on('kegunaans');
+            $table->string('kegunaan');
             $table->timestamps();
         });
     }
@@ -33,6 +27,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('katalog__obats');
+        Schema::dropIfExists('kegunaans');
     }
 };

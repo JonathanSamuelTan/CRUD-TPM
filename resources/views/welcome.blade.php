@@ -35,6 +35,7 @@
           <h5 class="card-title">Katalog Obat</h5>
           <p class="card-text">Berikut obat-obat yang tersedia untuk dibeli secara online maupun onsite</p>
           <a href="{{route('add')}}" class="btn btn-primary">Tambah Obat Baru</a>
+          <a href="{{route('add-kegunaan')}}" class="btn btn-primary">Tambah Kegunaan</a>
         </div>
     </div>
     <hr class="mx-3">

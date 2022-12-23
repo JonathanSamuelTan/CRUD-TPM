@@ -20,3 +20,5 @@ Route::get('/obat/{id}',[ObatController::class, 'show'])->name('detail');
 Route::get('/edit/{id}', [ObatController::class, 'edit'])->name('edit'); 
 Route::patch('/update/{id}', [ObatController::class, 'update'])->name('update');
 Route::delete('/delete/{id}', [ObatController::class, 'destroy'])->name('delete');
+Route::get('/add-kegunaan', [App\Http\Controllers\KegunaanController::class, 'create'])->name('add-kegunaan');
+Route::post('/store-kegunaan',[App\Http\Controllers\KegunaanController::class, 'store'])->name('store');

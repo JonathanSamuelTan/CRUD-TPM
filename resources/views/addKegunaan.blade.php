@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title><{{$item->name}}/title>
+    <title>Tambah Kegunaan</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
   </head>
   <body>
@@ -29,23 +29,25 @@
         </div>
     </nav>
 
-    <div>
-        <div class="card" style="width: 18rem;">
-            <div class="card-body">
-              <img src="{{asset('/storage/Obat/'.$item->image)}}" class="card-img-top" alt="{{$item->nama}}"> 
-              <h5 class="card-title">{{$item->nama}}</h5>
-              <p class="card-text">Rp.{{$item->harga}}</p>
+      <div class="m-5">
+        <h1>Tambah Kegunaan Baru</h1>
+        <form action="/store-kegunaan" method="POST" enctype="multipart/form-data">
+            @csrf
+            <div class="mb-3">
+              <label for="kegunaan" class="form-label">Kegunaan</label>
+              <input type="text" class="form-control @error('kegunaan') is-invalid @enderror" id="kegunaan" aria-describedby="emailHelp" name="kegunaan" value = {{old('kegunaan')}}>
+              @error('kegunaan')
+                <div class="alert alert-danger">{{ $message }}</div>
+              @enderror
             </div>
-            <ul class="list-group list-group-flush">
-              <li class="list-group-item">Kegunaan: {{$item->kegunaan->kegunaan}}</li>
-              <li class="list-group-item">PBF: {{$item->pbf}}</li>
-              <li class="list-group-item">Stok: {{$item->stok}}</li>
-            </ul>
-        </div>
-    </div>
+            
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </form>
+      </div>
 
     
       <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+  
   
     </body>
 </html>
