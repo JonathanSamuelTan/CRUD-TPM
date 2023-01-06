@@ -20,7 +20,7 @@ return new class extends Migration
             $table->integer('stok');
             $table->integer('harga');
             $table->string('image');
-            $table->integer('kegunaan_id');
+            $table->unsignedBigInteger('kegunaan_id');
             $table->foreign('kegunaan_id')->references('id')->on('kegunaans');
             $table->timestamps();
         });

@@ -23,8 +23,10 @@
         <div class="card-body">
           <h5 class="card-title">Katalog Obat</h5>
           <p class="card-text">Berikut obat-obat yang tersedia untuk dibeli secara online maupun onsite</p>
-          <a href="{{route('add')}}" class="btn btn-primary">Tambah Obat Baru</a>
-          <a href="{{route('add-kegunaan')}}" class="btn btn-primary">Tambah Kegunaan</a>
+          @can('isAdmin')
+            <a href="{{route('add')}}" class="btn btn-primary">Tambah Obat Baru</a>
+            <a href="{{route('add-kegunaan')}}" class="btn btn-primary">Tambah Kegunaan</a>
+          @endcan
         </div>
     </div>
     <hr class="mx-3">
@@ -40,12 +42,14 @@
                     <p class="card-text">Harga : Rp.{{$item->harga}}</p>
                     <p class="card-text">Stok  : {{$item->stok}}</p>
                     <a href="/obat/{{$item->id}}" class="btn btn-primary btn-sm my-2">Product Detail</a>
+                    @can('isAdmin')
                     <a href="/edit/{{$item->id}}" class="btn btn-success btn-sm my-2">Update</a>
                     <form action="/delete/{{$item->id}}" method="POST">
                       @csrf
                       @method('DELETE')
                       <button class="btn btn-danger btn-sm my-2">Delete</button>
                     </form>
+                    @endcan
                   </div>
                 </div>
               </div>

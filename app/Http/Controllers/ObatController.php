@@ -24,6 +24,7 @@ class ObatController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create(){
+        $this -> authorize('isAdmin');
         $kegunaan = kegunaan::all();
         return view('add', compact('kegunaan'));
     }
