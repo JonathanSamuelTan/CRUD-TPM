@@ -14,6 +14,7 @@ class ObatController extends Controller
      */
     public function index(){
         $obat = Katalog_Obat::all();
+        $obat = $obat->sortBy('nama');
         return view('welcome', compact('obat'));
     }
 
@@ -25,6 +26,7 @@ class ObatController extends Controller
     public function create(){
         $this -> authorize('isAdmin');
         $kegunaan = kegunaan::all();
+        $kegunaan = $kegunaan->sortBy('kegunaan');
         return view('add', compact('kegunaan'));
     }
 
