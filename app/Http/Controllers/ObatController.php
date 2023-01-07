@@ -1,7 +1,6 @@
 <?php
 
 namespace App\Http\Controllers;
-
 use Illuminate\Http\Request;
 use App\Models\Katalog_Obat;
 use App\Models\kegunaan;
@@ -79,6 +78,7 @@ class ObatController extends Controller
      */
     public function edit($id)
     {
+        $this -> authorize('isAdmin');
         $item = Katalog_Obat::findOrFail($id);
         return view("UpdateObat", compact('item'));
 

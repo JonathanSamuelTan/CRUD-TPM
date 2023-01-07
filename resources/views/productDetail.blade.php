@@ -16,10 +16,11 @@
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
+        <a class ="btn btn-danger"href="{{route('logout')}}"> Log Out</a>
       </div>
   </nav>
 
-    <div>
+    <div class="m-5">
         <div class="card" style="width: 18rem;">
             <div class="card-body">
               <img src="{{asset('/storage/Obat/'.$item->image)}}" class="card-img-top" alt="{{$item->nama}}"> 
